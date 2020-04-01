@@ -8,16 +8,19 @@ import co.edu.unbosque.model.Amigos;
 
 public class AmigosDAO {
 	
-	private ArchivoAmigos archivoAmigos;
+	private Archivo archivo;
+
 	
-	public AmigosDAO(ArchivoAmigos archivoAmigos) {
-		this.archivoAmigos = archivoAmigos;
+	public AmigosDAO(Archivo archivo) {
+		super();
+		this.archivo = archivo;
 	}
-	
+
 	/**
 	 * prueba pull
 	 */
-	public Amigos buscarAmigos(String pNumTel, ArrayList<Amigos> listaAmigos) {
+	public Amigos buscarAmigos(String pNumTel, ArrayList<ArrayList> agenda) {
+		ArrayList <Amigos> listaAmigos = agenda.get(0);
 		Amigos encontrado = null;
 		if(!listaAmigos.isEmpty()) {
 			for (int i = 0; i < listaAmigos.size(); i++) {
@@ -29,11 +32,11 @@ public class AmigosDAO {
 		return encontrado;
 	}
 	
-	public boolean agregarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<Amigos> listaAmigos) {
+	public boolean agregarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<ArrayList> agenda) {
 		Amigos a = new Amigos(nombre, pais, numTelefono, correo);
-		if(buscarAmigos(numTelefono, listaAmigos) == null) {
-			listaAmigos.add(a);
-			archivoAmigos.guardarDatosAmigos(listaAmigos);
+		if(buscarAmigos(numTelefono, agenda) == null) {
+			agenda.get(0).add(a);
+			archivo.guardarAgenda(agenda);
 			return true;
 		} else {
 			JOptionPane.showMessageDialog(null, "Ya existe un amigo con ese numero de telefono");
@@ -41,13 +44,13 @@ public class AmigosDAO {
 		}
 	}
 	
-	public boolean eliminarAmigo(String pNumTel, ArrayList<Amigos> listaAmigos) {
+	public boolean eliminarAmigo(String pNumTel, ArrayList<ArrayList> agenda) {
 		try {
-			Amigos a = buscarAmigos(pNumTel, listaAmigos);
-			listaAmigos.remove(a);
-			archivoAmigos.getArchivo().delete();
-			archivoAmigos.getArchivo().createNewFile();
-			archivoAmigos.guardarDatosAmigos(listaAmigos);
+			Amigos a = buscarAmigos(pNumTel, agenda);
+			agenda.get(0).remove(a);
+			archivo.getArchivo().delete();
+			archivo.getArchivo().createNewFile();
+			archivo.guardarAgenda(agenda);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,9 +58,9 @@ public class AmigosDAO {
 		}
 	}
 	
-	public boolean modificarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<Amigos> listaAmigos) {
-		eliminarAmigo(numTelefono, listaAmigos);
-		agregarAmigo(nombre, pais, numTelefono, correo, listaAmigos);
+	public boolean modificarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<ArrayList> agenda) {
+		eliminarAmigo(numTelefono, agenda);
+		agregarAmigo(nombre, pais, numTelefono, correo, agenda);
 		return true;
 	}
 
