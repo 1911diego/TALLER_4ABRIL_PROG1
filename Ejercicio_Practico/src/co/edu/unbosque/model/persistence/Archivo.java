@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import co.edu.unbosque.model.Amigos;
 
-public class ArchivoAmigos {
+public class Archivo{
 	
-	private File archivo = new File("datos/agendaDigitalAmigos.dat");
+	private File archivo = new File("datos/agendaDigital.dat");
 	
-	public ArchivoAmigos() {
+	public Archivo() {
 		if(archivo.exists()) {
 			JOptionPane.showMessageDialog(null, "El archivo ya existe");
 		} else {
@@ -27,10 +27,10 @@ public class ArchivoAmigos {
 		}
 	}
 	
-	public void guardarDatosAmigos(ArrayList<Amigos> amigos){
+	public void guardarAgenda(ArrayList<ArrayList> agenda){
 		try {
-			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo,true));
-			oos.writeObject(amigos);
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo));
+			oos.writeObject(agenda);
 			oos.writeObject("\n");
 			oos.close();
 		} catch (FileNotFoundException e) {
@@ -40,13 +40,13 @@ public class ArchivoAmigos {
 		}
 	}
 	
-	public ArrayList<Amigos> cargarDatosAmigos(){
-		ArrayList<Amigos> listaAmigos = new ArrayList<Amigos>();
+	public ArrayList<ArrayList> cargarAgenda(){
+		ArrayList<ArrayList> agenda = new ArrayList<ArrayList>();
 		if(archivo.length()!=0) {
 			try {
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo));
-				listaAmigos = (ArrayList<Amigos>) ois.readObject();
-				System.out.println(listaAmigos.size());
+				agenda = (ArrayList<ArrayList>) ois.readObject();
+				System.out.println(agenda.size());
 				JOptionPane.showMessageDialog(null, "Se cargaron los datos");
 				ois.close();
 			} catch (FileNotFoundException e) {
@@ -57,7 +57,7 @@ public class ArchivoAmigos {
 				JOptionPane.showMessageDialog(null, "No se encontro la clase");
 			}
 		}
-		return listaAmigos;
+		return agenda;
 	}
 	
 	public File getArchivo() {
