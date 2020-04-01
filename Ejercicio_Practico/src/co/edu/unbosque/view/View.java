@@ -102,8 +102,4 @@ public class View extends JFrame{
 		return texto2;
 	}
 
-	public static void main(String[] args) {
-		View v = new View();
-	}
-
 }
