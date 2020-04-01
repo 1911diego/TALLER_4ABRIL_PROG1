@@ -29,7 +29,7 @@ public class AmigosDAO {
 		return encontrado;
 	}
 	
-	public boolean agreagarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<Amigos> listaAmigos) {
+	public boolean agregarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<Amigos> listaAmigos) {
 		Amigos a = new Amigos(nombre, pais, numTelefono, correo);
 		if(buscarAmigos(numTelefono, listaAmigos) == null) {
 			listaAmigos.add(a);
@@ -53,6 +53,12 @@ public class AmigosDAO {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public boolean modificarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<Amigos> listaAmigos) {
+		eliminarAmigo(numTelefono, listaAmigos);
+		agregarAmigo(nombre, pais, numTelefono, correo, listaAmigos);
+		return true;
 	}
 
 }
