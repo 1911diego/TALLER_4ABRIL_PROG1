@@ -21,7 +21,7 @@ public class View extends JFrame{
 		this.setSize(550, 400);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
-		this.setTitle("Contactos rosita");
+		this.setTitle("Contactos Rosita");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		inicializar();
 		
