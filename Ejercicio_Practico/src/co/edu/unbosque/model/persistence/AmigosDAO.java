@@ -15,7 +15,7 @@ public class AmigosDAO {
 	}
 	
 	/**
-	 * metodo que busca amigos
+	 * prueba pull
 	 */
 	public Amigos buscarAmigos(String pNumTel, ArrayList<Amigos> listaAmigos) {
 		Amigos encontrado = null;
