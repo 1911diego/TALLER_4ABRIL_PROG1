@@ -14,6 +14,9 @@ public class AmigosDAO {
 		this.archivoAmigos = archivoAmigos;
 	}
 	
+	/**
+	 * metodo que busca amigos
+	 */
 	public Amigos buscarAmigos(String pNumTel, ArrayList<Amigos> listaAmigos) {
 		Amigos encontrado = null;
 		if(!listaAmigos.isEmpty()) {
