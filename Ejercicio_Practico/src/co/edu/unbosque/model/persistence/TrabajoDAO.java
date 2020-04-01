@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.Amigos;
 import co.edu.unbosque.model.Trabajo;
 
 public class TrabajoDAO {
@@ -56,6 +57,19 @@ public class TrabajoDAO {
 		}
 	}
 	
+	public int cantidadDeContactosTrabajoPorPais(String pais, ArrayList<ArrayList> agenda) {
+		int cantidadContactosTrabajo =0;
+		ArrayList <Trabajo> listaContactos = agenda.get(1);
+		if(!listaContactos.isEmpty()) {
+			for (int i = 0; i < listaContactos.size(); i++) {
+				if(listaContactos.get(i).getPais().equals(pais)){
+					cantidadContactosTrabajo++;
+				}
+			}
+		}
+		
+		 return cantidadContactosTrabajo;
+	}
 	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, ArrayList<ArrayList> agenda) {
 		eliminarContactoTrabajo(pTelManager, agenda);
 		agregarContactoTrabajo(pNombre, pEmpresa, pPais, pTelManager, agenda);
