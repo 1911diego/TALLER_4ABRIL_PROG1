@@ -326,6 +326,7 @@ public class Controller implements ActionListener{
 				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("AMIGO"))
 				{
 					amigosdao.modificarAmigo(telvalidar,nombre, pais, telefono, correo, agenda);
+					vista.mensajes("");
 					
 				}
 				
