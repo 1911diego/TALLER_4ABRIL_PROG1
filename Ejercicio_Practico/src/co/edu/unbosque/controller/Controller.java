@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import co.edu.unbosque.model.persistence.AmigosDAO;
 import co.edu.unbosque.model.persistence.Archivo;
 import co.edu.unbosque.model.persistence.TrabajoDAO;
 
-public class Controller {
+public class Controller implements ActionListener{
 
 		private ArrayList<ArrayList> agenda;
 		private Archivo archivo;
@@ -20,6 +21,12 @@ public class Controller {
 			amigosdao = new AmigosDAO(archivo);
 			trabajodao = new TrabajoDAO(archivo);
 			agenda = archivo.cargarAgenda();
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
 		}
 
 }
