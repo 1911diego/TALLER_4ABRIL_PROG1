@@ -85,32 +85,7 @@ public class AmigosDAO {
 		}
 	}
 	
-	private boolean eliminarAmigoModificado(String pnombre, ArrayList<ArrayList> agenda) {
-		try {
-			Amigos a = buscarAmigos(pnombre, agenda);
-			agenda.get(0).remove(a);
-			archivo.getArchivo().delete();
-			archivo.getArchivo().createNewFile();
-			archivo.guardarAgenda(agenda);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
 	
-	private Amigos buscarAmigomodificado(String pnombre, ArrayList<ArrayList> agenda) {
-		ArrayList <Amigos> listaAmigos = agenda.get(0);
-		Amigos encontrado = null;
-		if(!listaAmigos.isEmpty()) {
-			for (int i = 0; i < listaAmigos.size(); i++) {
-				if(listaAmigos.get(i).getNumTelefono().equals(pnombre)){
-					encontrado = listaAmigos.get(i);
-				}
-			}
-		}
-		return encontrado;
-	}
 	
 	
 	/**
