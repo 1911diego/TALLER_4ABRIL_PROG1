@@ -131,5 +131,21 @@ public class TrabajoDAO {
 			return false;
 		}
 	}
+	
+	public Trabajo listarContactos(ArrayList<ArrayList> agenda, int a) {
+		ArrayList <Trabajo> listaContactos = agenda.get(1);
+		Trabajo encontrado = null;
+		
+		if(!listaContactos.isEmpty()) {
+					encontrado = listaContactos.get(a);
+					return encontrado;
+				
+			}
+		else 
+		{
+			return null;
+		}
+	}
+	
 
 }

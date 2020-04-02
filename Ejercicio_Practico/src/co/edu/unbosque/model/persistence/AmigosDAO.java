@@ -127,5 +127,19 @@ public class AmigosDAO {
 			return false;
 		}
 	}
-
+	
+	public Amigos listarAmigos(ArrayList<ArrayList> agenda, int a) {
+		ArrayList <Amigos> listaAmigos = agenda.get(0);
+		Amigos encontrado = null;
+		
+		if(!listaAmigos.isEmpty()) {
+					encontrado = listaAmigos.get(a);
+					return encontrado;
+				
+			}
+		else 
+		{
+			return null;
+		}
+	}
 }

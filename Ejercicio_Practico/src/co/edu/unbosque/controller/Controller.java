@@ -146,16 +146,6 @@ public class Controller implements ActionListener{
 				
 			}
 			
-			
-			//BOTÓN VER CONTACTOS
-			if(e.getSource()==vista.getpPrincipal().getBotonver())
-			{
-				vista.getpPrincipal().setVisible(false);
-				vista.getpAgregar().setVisible(false);
-				vista.getpVer().setVisible(true);
-				
-			}
-			
 			//BOTÓN VOLVER PANEL VER CONTACTOS
 			if(e.getSource()==vista.getpVer().getVolver())
 			{
@@ -314,6 +304,48 @@ public class Controller implements ActionListener{
 				if(buscarcontacto==null&&buscaramigos==null)
 				{
 					vista.mensajes("NO_ELIMINADO");
+				}
+				
+			}
+			
+			
+			//BOTÓN VER CONTACTOS
+			if(e.getSource()==vista.getpPrincipal().getBotonver())
+			{
+				Amigos listaramigos;
+				Trabajo listarcontactos;
+				vista.getpPrincipal().setVisible(false);
+				vista.getpAgregar().setVisible(false);
+				vista.getpVer().setVisible(true);
+				
+				for(int i = 0; i<agenda.size();i++)
+				{
+					try {
+					listaramigos = amigosdao.listarAmigos(agenda,i);
+					vista.getpVer().getInfoamigos().setValueAt(listaramigos.getNombre().toUpperCase(),i,0);
+					vista.getpVer().getInfoamigos().setValueAt(listaramigos.getPais().toUpperCase(),i,1);
+					vista.getpVer().getInfoamigos().setValueAt(listaramigos.getNumTelefono().toUpperCase(),i,2);
+					vista.getpVer().getInfoamigos().setValueAt(listaramigos.getCorreo().toUpperCase(),i,3);
+					}
+					catch(Exception excepcion)
+					{
+						
+					}
+					
+					try {
+						listarcontactos = trabajodao.listarContactos(agenda,i);
+						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getNombre().toUpperCase(),i,0);
+						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getPais().toUpperCase(),i,1);
+						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getTelManager().toUpperCase(),i,2);
+						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getCorreoT().toUpperCase(),i,3);
+						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getEmpresa().toUpperCase(),i,4);
+						}
+						catch(Exception excepcion)
+						{
+							
+						}
+					
+					
 				}
 				
 			}

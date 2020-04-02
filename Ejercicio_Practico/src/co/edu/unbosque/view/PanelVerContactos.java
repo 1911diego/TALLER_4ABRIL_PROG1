@@ -47,8 +47,7 @@ public class PanelVerContactos extends JPanel{
 		
 		
 		
-		String[][] datosamigos = {{"","","",""},
-						{"","","",""}};
+		String[][] datosamigos = new String[20][4];
 		String[] cabezeraamigos = {"NOMBRE","PAÍS","TELÉFONO","E-MAIL"};
 		
 		infoamigos = new JTable(datosamigos,cabezeraamigos);
@@ -59,8 +58,7 @@ public class PanelVerContactos extends JPanel{
 		scroll.setViewportView(infoamigos);
 		scroll.getViewport().setView(infoamigos);
 		
-		String[][] datoscontactos = {{"","","","",""},
-				{"","","","",""}};
+		String[][] datoscontactos = new String[20][5];
 		String[] cabezeracontactos = {"NOMBRE","PAÍS","TELÉFONO","E-MAIL","EMPRESA"};
 
 		infocontactos = new JTable(datoscontactos,cabezeracontactos);
