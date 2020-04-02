@@ -27,12 +27,17 @@ public class Trabajo implements Serializable{
 		this.correoT = correoT;
 	}
 
+	
+	
+
+
 	/**
 	 * Metodo getter de la variable correoT
 	 * @return Devuelve el valor de la variable correoT
 	 */
 	public String getCorreoT() {
 		return correoT;
+
 	}
 
 	/**

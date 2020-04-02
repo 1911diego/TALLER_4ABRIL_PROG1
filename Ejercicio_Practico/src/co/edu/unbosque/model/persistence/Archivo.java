@@ -97,6 +97,7 @@ public class Archivo{
 	public ArrayList<ArrayList> cargarAgendaFisica( File agend) throws Exception{
 		ArrayList<String> aux = new ArrayList<String>();
 		ArrayList<String> aux1 = new ArrayList<String>();
+		ArrayList<String> aux2 = new ArrayList<String>();
 		ArrayList<ArrayList> agendF = new ArrayList<ArrayList>();
         // Cargar las letras del archivo de propiedades
         Properties infoAgendaFisica = new Properties( );
@@ -106,6 +107,7 @@ public class Archivo{
         // Cargar las letras
         int numAmigos = Integer.parseInt( infoAgendaFisica.getProperty( "amigo.cantidad" ) );
         int numTrabajo = Integer.parseInt( infoAgendaFisica.getProperty( "contacto.cantidad" ) );
+        int numPaises = Integer.parseInt( infoAgendaFisica.getProperty( "agenda.paises" ) );
         for( int i = 1; i <= numAmigos; i++ ){
             String nombre = infoAgendaFisica.getProperty( "amigo.nombre" + i );
             String pais = infoAgendaFisica.getProperty( "amigo.pais" + i );
@@ -113,6 +115,12 @@ public class Archivo{
             String correo = infoAgendaFisica.getProperty( "amigo.correo" + i );
             String conc = nombre + ";" + pais+ ";" + telefono + ";" + correo;
             aux.add(conc);
+        }
+        
+        for( int i = 1; i <= numPaises; i++ ){
+        	
+        	String pais = infoAgendaFisica.getProperty( "agenda.pais1" + i );
+        	aux2.add(pais);
         }
         
         for( int i = 1; i <= numTrabajo; i++ ){
@@ -127,6 +135,7 @@ public class Archivo{
         
         agendF.add(aux);
         agendF.add(aux1);
+        agendF.add(aux2);
         
 		return agendF;
     }
