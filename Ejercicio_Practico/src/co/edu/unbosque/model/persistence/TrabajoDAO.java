@@ -49,6 +49,7 @@ public class TrabajoDAO {
 	 * @param pEmpresa Es el nombre de la empresa del contacto
 	 * @param pPais Es el pais de origen del contacto
 	 * @param pTelManager Es el numero del manager del contacto
+	 * @param correoT correo del contacto
 	 * @param agenda Es la agenda de contactos
 	 * @return Devuelve un valor de true si se agrego el contacto, de lo contrario devolvera false
 	 */
@@ -117,6 +118,7 @@ public class TrabajoDAO {
 	 * @param pPais
 	 * @param pTelManager
 	 * @param agenda
+	 * @param correoT correo del contacto
 	 * @return devuelve un valor de true si se modifico el contacto, de lo contrario devolvera false si no se pudo modificar
 	 */
 	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT, ArrayList<ArrayList> agenda) {

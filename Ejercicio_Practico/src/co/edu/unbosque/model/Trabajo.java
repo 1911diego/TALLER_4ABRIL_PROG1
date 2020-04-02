@@ -17,6 +17,7 @@ public class Trabajo implements Serializable{
 	 * @param empresa nombre de la empresa
 	 * @param pais donde esta ubicada la empresa
 	 * @param telManager numero de telefono del manager
+	 * @param correoT correo del contacto
 	 */
 	public Trabajo(String nombre, String empresa, String pais, String telManager, String correoT) {
 		this.nombre = nombre;
