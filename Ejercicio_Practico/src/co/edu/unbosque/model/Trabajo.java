@@ -26,6 +26,16 @@ public class Trabajo implements Serializable{
 		this.correoT = correoT;
 	}
 
+	
+	
+	
+	public String getCorreoT() {
+		return correoT;
+	}
+
+
+
+
 	public void setCorreoT(String correoT) {
 		this.correoT = correoT;
 	}
