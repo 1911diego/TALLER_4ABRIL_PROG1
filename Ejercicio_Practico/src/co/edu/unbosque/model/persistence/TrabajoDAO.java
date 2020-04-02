@@ -52,8 +52,8 @@ public class TrabajoDAO {
 	 * @param agenda Es la agenda de contactos
 	 * @return Devuelve un valor de true si se agrego el contacto, de lo contrario devolvera false
 	 */
-	public boolean agregarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager,  ArrayList<ArrayList> agenda) {
-		Trabajo t = new Trabajo(pNombre, pEmpresa, pPais, pTelManager);
+	public boolean agregarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT, ArrayList<ArrayList> agenda) {
+		Trabajo t = new Trabajo(pNombre, pEmpresa, pPais, pTelManager, correoT);
 		if(buscarContactoTrabajo(pTelManager, agenda) == null) {
 			agenda.get(1).add(t);
 			archivo.guardarAgenda(agenda);
@@ -119,10 +119,10 @@ public class TrabajoDAO {
 	 * @param agenda
 	 * @return devuelve un valor de true si se modifico el contacto, de lo contrario devolvera false si no se pudo modificar
 	 */
-	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, ArrayList<ArrayList> agenda) {
+	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT, ArrayList<ArrayList> agenda) {
 		try {
 			eliminarContactoTrabajo(pTelManager, agenda);
-			agregarContactoTrabajo(pNombre, pEmpresa, pPais, pTelManager, agenda);
+			agregarContactoTrabajo(pNombre, pEmpresa, pPais, pTelManager, correoT, agenda);
 			return true;
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No se pudo modificar el contacto");
