@@ -86,7 +86,14 @@ public class Archivo{
 		return agenda;
 	}
 	
-	
+	/**
+	 * Metodo que carga la agenda fisica
+	 * <b>pre</b>Se necesita que la variable agend este inicializada
+	 * <b>pos</b>carga los datos a un ArrayList
+	 * @param agend Es el archivo properties
+	 * @return Devuelve un ArrayList de la agenda con los datos
+	 * @throws Exception 
+	 */
 	public ArrayList<ArrayList> cargarAgendaFisica( File agend) throws Exception{
 		ArrayList<String> aux = new ArrayList<String>();
 		ArrayList<String> aux1 = new ArrayList<String>();
