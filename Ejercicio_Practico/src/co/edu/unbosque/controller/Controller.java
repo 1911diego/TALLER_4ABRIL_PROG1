@@ -90,18 +90,34 @@ public class Controller implements ActionListener{
 						ArrayList<String> paises = archivo.cargarAgendaFisica(f).get(2);
 						for(int i = 0; i < amigos.size(); i++) {
 							String [] conc =amigos.get(i).split(";");
-							amigosdao.agregarAmigo(conc[0], conc[1], conc[2], conc[3], agenda);
+							if(amigosdao.buscarAmigos(conc[2], agenda)!=null) {
+								
+							}else {
+
+								amigosdao.agregarAmigo(conc[0], conc[1], conc[2], conc[3], agenda);
+							}
 							
 						}
 						
 						for(int i = 0; i < trabajo.size(); i++) {
 							String [] conc =trabajo.get(i).split(";");
-							trabajodao.agregarContactoTrabajo(conc[0], conc[1], conc[2], conc[3],conc[4], agenda);
+							if(trabajodao.buscarContactoTrabajo(conc[3], agenda)!=null) {
+								
+							}else {
+								trabajodao.agregarContactoTrabajo(conc[0], conc[1], conc[2], conc[3],conc[4], agenda);
+							}
+							
 						}
 						
 						for(int i=0; i<paises.size(); i++) {
 							String pais = paises.get(i);
-							agenda.get(2).add(pais);
+							if(agenda.get(2).contains(pais)) {
+								
+							}else {
+								agenda.get(2).add(pais);
+							}
+							
+							
 						}
 						System.out.println(agenda.size());
 						System.out.println(agenda.get(2).size());
