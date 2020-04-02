@@ -85,7 +85,14 @@ public class AmigosDAO {
 		}
 	}
 	
-<<<<<<< HEAD
+	/**
+	 * Metodo que obtiene la cantidad de amigos por pais
+	 * <b>pre</b> Se necesita que la varible pais sea diferente de null
+	 * <b>pos</b> da la cantidad de contactos en ese pais 
+	 * @param pais Es el pais de origen
+	 * @param agenda Es la agenda de contactos
+	 * @return Devuelve un valor de tipo int con la cantidad de contactos
+	 */
 	public int cantidadDeAmigosPorPais(String pais, ArrayList<ArrayList> agenda) {
 		int cantidadAmigos =0;
 		ArrayList <Amigos> listaAmigos = agenda.get(0);
@@ -99,8 +106,7 @@ public class AmigosDAO {
 		
 		 return cantidadAmigos;
 	}
-	
-=======
+
 	/**
 	 * Metodo que modifica un contacto deseado
 	 * <b>pre</b>Se debe saber el numero de telefono del amigo
@@ -111,7 +117,6 @@ public class AmigosDAO {
 	 * @param agenda Es la agenda de contactos
 	 * @return devuelve un valor de true si se modifico el contacto, de lo contrario devolvera false si no se pudo modificar
 	 */
->>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 	public boolean modificarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<ArrayList> agenda) {
 		try {
 			eliminarAmigo(numTelefono, agenda);

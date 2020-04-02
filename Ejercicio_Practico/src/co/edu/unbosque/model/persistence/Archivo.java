@@ -54,31 +54,24 @@ public class Archivo{
 			JOptionPane.showMessageDialog(null, "Hubo un error al escribir en el archivo");
 		}
 	}
-	
-<<<<<<< HEAD
-	
-=======
+
 	/**
 	 * este metodo carga los datos de los contactos
 	 * <b>pre</b>el archivo debe estar creado
 	 * <b>pos</b>se lee y se guarda en un ArrayList los datos leidos del archivo
 	 * @return devuelve la lista de contactos
 	 */
->>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 	public ArrayList<ArrayList> cargarAgenda(){
 		
-		ArrayList <ArrayList> agend= new ArrayList<ArrayList>();
+		ArrayList <ArrayList> agenda= new ArrayList<ArrayList>();
 		if (archivo.length() != 0) {
 			try {
-<<<<<<< HEAD
 				ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivo));
-				agend = (ArrayList<ArrayList>) entrada.readObject();
-=======
+				agenda = (ArrayList<ArrayList>) entrada.readObject();
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo));
 				agenda = (ArrayList<ArrayList>) ois.readObject();
 				JOptionPane.showMessageDialog(null, "Se cargaron los datos");
 				ois.close();
->>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -90,10 +83,9 @@ public class Archivo{
 				e.printStackTrace();
 			}
 		}
-		return agend;
+		return agenda;
 	}
 	
-<<<<<<< HEAD
 	
 	public ArrayList<ArrayList> cargarAgendaFisica( File agend) throws Exception{
 		ArrayList<String> aux = new ArrayList<String>();
@@ -131,12 +123,11 @@ public class Archivo{
         
 		return agendF;
     }
-=======
+
 	/**
 	 * Metodo getter del archivo
 	 * @return devuelve el valor del archivo
 	 */
->>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 	public File getArchivo() {
 		return archivo;
 	}

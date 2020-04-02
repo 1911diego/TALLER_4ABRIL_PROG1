@@ -41,10 +41,6 @@ public class TrabajoDAO {
 		return contactoEncontrado;
 	}
 	
-<<<<<<< HEAD
-	public boolean agregarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT,  ArrayList<ArrayList> agenda) {
-		Trabajo t = new Trabajo(pNombre, pEmpresa, pPais, pTelManager, correoT);
-=======
 	/**
 	 * Este metodo agreaga un contacto en la agenda
 	 * <b>pre</b>se necesita toda la informacion del contacto
@@ -58,7 +54,6 @@ public class TrabajoDAO {
 	 */
 	public boolean agregarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager,  ArrayList<ArrayList> agenda) {
 		Trabajo t = new Trabajo(pNombre, pEmpresa, pPais, pTelManager);
->>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 		if(buscarContactoTrabajo(pTelManager, agenda) == null) {
 			agenda.get(1).add(t);
 			archivo.guardarAgenda(agenda);
@@ -91,7 +86,14 @@ public class TrabajoDAO {
 		}
 	}
 	
-<<<<<<< HEAD
+	/**
+	 * Metodo que obtiene la cantidad de contactos de trabajo por pais
+	 * <b>pre</b> se requiere el valor de la variable pais diferente de null
+	 * <b>pos</b> da la cantidad de contactos en ese pais
+	 * @param pais Es el pais de origen
+	 * @param agenda Es la agenda de contactos
+	 * @return Devuelve un valor de tipo int de la cantidad de contactos
+	 */
 	public int cantidadDeContactosTrabajoPorPais(String pais, ArrayList<ArrayList> agenda) {
 		int cantidadContactosTrabajo =0;
 		ArrayList <Trabajo> listaContactos = agenda.get(1);
@@ -105,11 +107,7 @@ public class TrabajoDAO {
 		
 		 return cantidadContactosTrabajo;
 	}
-	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT, ArrayList<ArrayList> agenda) {
-		eliminarContactoTrabajo(pTelManager, agenda);
-		agregarContactoTrabajo(pNombre, pEmpresa, pPais, pTelManager, correoT, agenda);
-		return true;
-=======
+	
 	/**
 	 * Metodo que modifica un contacto deseado
 	 * <b>pre</b>Se debe saber el numero de telefono del manager
@@ -130,7 +128,6 @@ public class TrabajoDAO {
 			JOptionPane.showMessageDialog(null, "No se pudo modificar el contacto");
 			return false;
 		}
->>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 	}
 
 }

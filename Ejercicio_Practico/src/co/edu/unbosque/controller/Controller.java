@@ -60,7 +60,6 @@ public class Controller implements ActionListener{
 				}
 		}
 
-<<<<<<< HEAD
 		public static void main(String[]args) {
 			Controller c = new Controller();
 			Archivo ar = new Archivo();
@@ -70,12 +69,10 @@ public class Controller implements ActionListener{
 			System.out.println(c.agenda.size());
 	
 		}
-=======
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			
 		}
 
->>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 }
