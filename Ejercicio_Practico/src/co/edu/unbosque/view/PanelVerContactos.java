@@ -1,18 +1,19 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class PanelVerContactos extends JPanel{
 
+	private ImageIcon imagenes;
 	private JLabel titulo;
 	private JLabel amigos;
 	private JLabel contactos;
@@ -39,12 +40,10 @@ public class PanelVerContactos extends JPanel{
 	{
 
 		JLabel fondo = new JLabel();
-		fondo.setBounds(20,20,640,370);
-		fondo.setBackground(Color.BLACK);
+		fondo.setBounds(0,0,750,450);
+		imagenes = new ImageIcon("Resources/fondolistar.jpeg");
+		fondo.setIcon(imagenes);
 		fondo.setLayout(null);
-		fondo.setOpaque(true);
-		fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, Color.DARK_GRAY, Color.WHITE));
-		
 		
 		
 		String[][] datosamigos = new String[20][4];
@@ -52,7 +51,7 @@ public class PanelVerContactos extends JPanel{
 		
 		infoamigos = new JTable(datosamigos,cabezeraamigos);
 		JScrollPane scroll = new JScrollPane(infoamigos);
-		scroll.setBounds(30,70,590,100);
+		scroll.setBounds(30,70,610,100);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scroll.setViewportView(infoamigos);
@@ -63,7 +62,7 @@ public class PanelVerContactos extends JPanel{
 
 		infocontactos = new JTable(datoscontactos,cabezeracontactos);
 		JScrollPane scroll2 = new JScrollPane(infocontactos);
-		scroll2.setBounds(30,210,590,100);
+		scroll2.setBounds(30,210,610,100);
 		scroll2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scroll2.setViewportView(infocontactos);
@@ -73,23 +72,23 @@ public class PanelVerContactos extends JPanel{
 		titulo = new JLabel("DIRECTORIO");
 		titulo.setBounds(30,0,200,50);
 		titulo.setFont(new Font("helvetica",Font.BOLD,25));
-		titulo.setForeground(Color.WHITE);
+		titulo.setForeground(Color.BLACK);
 		
 		amigos = new JLabel("AMIGOS");
 		amigos.setBounds(40,50,100,20);
 		amigos.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		amigos.setForeground(Color.LIGHT_GRAY);
+		amigos.setForeground(Color.WHITE);
 		
 		contactos = new JLabel("CONTACTOS");
 		contactos.setBounds(40,190,100,20);
 		contactos.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		contactos.setForeground(Color.LIGHT_GRAY);
+		contactos.setForeground(Color.WHITE);
 		
-		volver = new JButton("VOLVER");
-		volver.setBounds(490,320,110,40);
-		volver.setBackground(Color.WHITE);
-		volver.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		volver.setForeground(Color.BLUE);
+		volver = new JButton();
+		volver.setBounds(530,330,110,40);
+		imagenes = new ImageIcon("Resources/botonvolver.jpeg");
+		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(110,40, Image.SCALE_DEFAULT));
+		volver.setIcon(imagenes);
 		volver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
 		

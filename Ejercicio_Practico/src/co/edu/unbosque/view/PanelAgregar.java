@@ -2,7 +2,9 @@ package co.edu.unbosque.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -11,6 +13,7 @@ import javax.swing.JTextField;
 
 public class PanelAgregar extends JPanel {
 	
+	private ImageIcon imagenes;
 	private JLabel titulo;
 	private JComboBox<String> tipodecontacto;
 	private JLabel lnombre, lpais, lcorreo, ltelefono, lempresa;
@@ -43,11 +46,10 @@ public class PanelAgregar extends JPanel {
 	public void panelDeControl()
 	{
 		JLabel fondo = new JLabel();
-		fondo.setBounds(20,20,640,370);
-		fondo.setBackground(Color.BLACK);
+		fondo.setBounds(0,0,750,450);
+		imagenes = new ImageIcon("Resources/fondoagregar.jpg");
+		fondo.setIcon(imagenes);
 		fondo.setLayout(null);
-		fondo.setOpaque(true);
-		fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, Color.DARK_GRAY, Color.WHITE));
 		
 		titulo = new JLabel("CONTACTOS");
 		titulo.setBounds(20,15,200,80);
@@ -66,7 +68,7 @@ public class PanelAgregar extends JPanel {
 		lnombre = new JLabel("NOMBRE");
 		lnombre.setBounds(50,80,120,50);
 		lnombre.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		lnombre.setForeground(Color.LIGHT_GRAY);
+		lnombre.setForeground(Color.WHITE);
 		
 		txtnombre = new JTextField();
 		txtnombre.setBounds(160,90,140,30);
@@ -75,7 +77,7 @@ public class PanelAgregar extends JPanel {
 		lpais = new JLabel("PAIS");
 		lpais.setBounds(50,130,120,50);
 		lpais.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		lpais.setForeground(Color.LIGHT_GRAY);
+		lpais.setForeground(Color.WHITE);
 		
 		txtpais = new JTextField();
 		txtpais.setBounds(160,140,140,30);
@@ -84,7 +86,7 @@ public class PanelAgregar extends JPanel {
 		ltelefono = new JLabel("TELÉFONO");
 		ltelefono.setBounds(50,180,120,50);
 		ltelefono.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		ltelefono.setForeground(Color.LIGHT_GRAY);
+		ltelefono.setForeground(Color.WHITE);
 		
 		txttelefono = new JTextField();
 		txttelefono.setBounds(160,190,140,30);
@@ -93,7 +95,7 @@ public class PanelAgregar extends JPanel {
 		lcorreo = new JLabel("E-MAIL");
 		lcorreo.setBounds(50,230,120,50);
 		lcorreo.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		lcorreo.setForeground(Color.LIGHT_GRAY);
+		lcorreo.setForeground(Color.WHITE);
 		
 		txtcorreo = new JTextField();
 		txtcorreo.setBounds(160,240,140,30);
@@ -102,38 +104,38 @@ public class PanelAgregar extends JPanel {
 		lempresa = new JLabel("EMPRESA");
 		lempresa.setBounds(50,280,120,50);
 		lempresa.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		lempresa.setForeground(Color.LIGHT_GRAY);
+		lempresa.setForeground(Color.WHITE);
 		
 		txtempresa = new JTextField();
 		txtempresa.setBounds(160,290,140,30);
 		txtempresa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
-		botoncrear = new JButton("CREAR CONTACTO");
-		botoncrear.setBounds(380,100,220,80);
-		botoncrear.setBackground(Color.BLUE);
-		botoncrear.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		botoncrear.setForeground(Color.WHITE);
+		botoncrear = new JButton();
+		botoncrear.setBounds(380,100,200,70);
+		imagenes = new ImageIcon("Resources/botonagregar.jpeg");
+		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(200, 70, Image.SCALE_DEFAULT));
+		botoncrear.setIcon(imagenes);
 		botoncrear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
-		botoneditar = new JButton("EDITAR CONTACTO");
-		botoneditar.setBounds(380,100,220,80);
-		botoneditar.setBackground(Color.BLUE);
-		botoneditar.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		botoneditar.setForeground(Color.WHITE);
+		botoneditar = new JButton();
+		botoneditar.setBounds(380,100,200,70);
+		imagenes = new ImageIcon("Resources/botoneditar.jpeg");
+		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(200, 70, Image.SCALE_DEFAULT));
+		botoneditar.setIcon(imagenes);
 		botoneditar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
-		botoneliminar = new JButton("ELIMINAR CONTACTO");
-		botoneliminar.setBounds(380,200,220,80);
-		botoneliminar.setBackground(Color.RED);
-		botoneliminar.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		botoneliminar.setForeground(Color.WHITE);
+		botoneliminar = new JButton();
+		botoneliminar.setBounds(380,200,200,70);
+		imagenes = new ImageIcon("Resources/botoneliminar.jpeg");
+		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(200, 70, Image.SCALE_DEFAULT));
+		botoneliminar.setIcon(imagenes);
 		botoneliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
-		volver = new JButton("VOLVER");
-		volver.setBounds(490,320,110,40);
-		volver.setBackground(Color.WHITE);
-		volver.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
-		volver.setForeground(Color.BLUE);
+		volver = new JButton();
+		volver.setBounds(470,320,110,40);
+		imagenes = new ImageIcon("Resources/botonvolver.jpeg");
+		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(110,40, Image.SCALE_DEFAULT));
+		volver.setIcon(imagenes);
 		volver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
 		add(fondo);
@@ -153,6 +155,16 @@ public class PanelAgregar extends JPanel {
 		fondo.add(botoneditar);
 		fondo.add(tipodecontacto);
 		fondo.add(volver);
+	}
+	
+	public void reestablecer()
+	{
+		txtnombre.setText("");
+		txtpais.setText("");
+		txttelefono.setText("");
+		txtcorreo.setText("");
+		txtempresa.setText("");
+		tipodecontacto.setSelectedItem("SELECCIONE TIPO");
 	}
 
 

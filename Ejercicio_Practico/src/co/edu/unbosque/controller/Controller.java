@@ -135,6 +135,7 @@ public class Controller implements ActionListener{
 				vista.getpVer().setVisible(false);
 				vista.getpAgregar().getBotoncrear().setVisible(true);
 				vista.getpAgregar().getBotoneditar().setVisible(false);
+				vista.getpAgregar().reestablecer();
 			}
 			
 			//BOTÓN VOLVER DEL PANEL AGREGAR
