@@ -119,11 +119,12 @@ public class TrabajoDAO {
 	 * @param pTelManager
 	 * @param agenda
 	 * @param correoT correo del contacto
+	 * @param telvalidar validación con el teléfono antiguo
 	 * @return devuelve un valor de true si se modifico el contacto, de lo contrario devolvera false si no se pudo modificar
 	 */
-	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT, ArrayList<ArrayList> agenda) {
+	public boolean modificarContactoTrabajo(String telvalidar, String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT, ArrayList<ArrayList> agenda) {
 		try {
-			eliminarContactoTrabajo(pTelManager, agenda);
+			eliminarContactoTrabajo(telvalidar, agenda);
 			agregarContactoTrabajo(pNombre, pEmpresa, pPais, pTelManager, correoT, agenda);
 			return true;
 		} catch (Exception e) {

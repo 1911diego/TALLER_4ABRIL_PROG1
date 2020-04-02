@@ -85,6 +85,34 @@ public class AmigosDAO {
 		}
 	}
 	
+	private boolean eliminarAmigoModificado(String pnombre, ArrayList<ArrayList> agenda) {
+		try {
+			Amigos a = buscarAmigos(pnombre, agenda);
+			agenda.get(0).remove(a);
+			archivo.getArchivo().delete();
+			archivo.getArchivo().createNewFile();
+			archivo.guardarAgenda(agenda);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	private Amigos buscarAmigomodificado(String pnombre, ArrayList<ArrayList> agenda) {
+		ArrayList <Amigos> listaAmigos = agenda.get(0);
+		Amigos encontrado = null;
+		if(!listaAmigos.isEmpty()) {
+			for (int i = 0; i < listaAmigos.size(); i++) {
+				if(listaAmigos.get(i).getNumTelefono().equals(pnombre)){
+					encontrado = listaAmigos.get(i);
+				}
+			}
+		}
+		return encontrado;
+	}
+	
+	
 	/**
 	 * Metodo que obtiene la cantidad de amigos por pais
 	 * <b>pre</b> Se necesita que la varible pais sea diferente de null
@@ -115,11 +143,13 @@ public class AmigosDAO {
 	 * @param pais Es el pais de origen del amigo
 	 * @param numTelefono Es el numero de telefono del amigo
 	 * @param agenda Es la agenda de contactos
+	 * @param telvalidar Es el teléfono que valida que contacto eliminar
 	 * @return devuelve un valor de true si se modifico el contacto, de lo contrario devolvera false si no se pudo modificar
 	 */
-	public boolean modificarAmigo(String nombre, String pais, String numTelefono, String correo, ArrayList<ArrayList> agenda) {
+	public boolean modificarAmigo(String telvalidar, String nombre, String pais, String numTelefono, String correo, ArrayList<ArrayList> agenda) {
 		try {
-			eliminarAmigo(numTelefono, agenda);
+			eliminarAmigo(telvalidar, agenda);
+			
 			agregarAmigo(nombre, pais, numTelefono, correo, agenda);
 			return true;
 		} catch (Exception e) {

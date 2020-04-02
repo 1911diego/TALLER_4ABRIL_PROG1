@@ -179,7 +179,7 @@ public class Controller implements ActionListener{
 			{
 				Amigos nuevoamigo;
 				Trabajo nuevocontacto;
-				String nombre, pais, telefono, correo, empresa;
+				String nombre, pais, telefono, correo, empresa, validar;
 				nombre = vista.getpAgregar().getTxtnombre().getText();
 				pais = vista.getpAgregar().getTxtpais().getText();
 				telefono = vista.getpAgregar().getTxttelefono().getText();
@@ -236,12 +236,13 @@ public class Controller implements ActionListener{
 					telefono = buscaramigos.getNumTelefono();
 					correo = buscaramigos.getCorreo();
 					
+					
 					vista.getpAgregar().getTxtnombre().setText(nombre);
 					vista.getpAgregar().getTxtpais().setText(pais);
 					vista.getpAgregar().getTxttelefono().setText(telefono);
 					vista.getpAgregar().getTxtcorreo().setText(correo);
 					vista.getpAgregar().getTipodecontacto().setSelectedItem("AMIGO");
-					
+					vista.getpAgregar().setValidar(telefono);
 					vista.getpPrincipal().setVisible(false);
 					vista.getpAgregar().setVisible(true);
 					vista.getpVer().setVisible(false);
@@ -263,7 +264,7 @@ public class Controller implements ActionListener{
 					vista.getpAgregar().getTxtcorreo().setText(correo);
 					vista.getpAgregar().getTxtempresa().setText(empresa);
 					vista.getpAgregar().getTipodecontacto().setSelectedItem("CONTACTO");
-					
+					vista.getpAgregar().setValidar(telefono);
 					vista.getpPrincipal().setVisible(false);
 					vista.getpAgregar().setVisible(true);
 					vista.getpVer().setVisible(false);
@@ -309,11 +310,38 @@ public class Controller implements ActionListener{
 			}
 			
 			
+			//BOTÓN EDITAR CONTACTOS
+			
+			if(e.getSource()==vista.getpAgregar().getBotoneditar())
+			{
+				String nombre,pais,telefono,correo,empresa,telvalidar;
+				
+				nombre = vista.getpAgregar().getTxtnombre().getText();
+				pais = vista.getpAgregar().getTxtpais().getText();
+				telvalidar = vista.getpAgregar().getValidar();
+				telefono = vista.getpAgregar().getTxttelefono().getText();
+				correo = vista.getpAgregar().getTxtcorreo().getText();
+				empresa = vista.getpAgregar().getTxtempresa().getText();
+				
+				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("AMIGO"))
+				{
+					amigosdao.modificarAmigo(telvalidar,nombre, pais, telefono, correo, agenda);
+					
+				}
+				
+				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("CONTACTO"))
+				{
+					trabajodao.modificarContactoTrabajo(telvalidar,nombre, empresa, pais, telefono, correo, agenda);
+				}
+			}
+			
+			
 			//BOTÓN VER CONTACTOS
 			if(e.getSource()==vista.getpPrincipal().getBotonver())
 			{
 				Amigos listaramigos;
 				Trabajo listarcontactos;
+				vista.getpVer().reestablecer();
 				vista.getpPrincipal().setVisible(false);
 				vista.getpAgregar().setVisible(false);
 				vista.getpVer().setVisible(true);

@@ -25,6 +25,8 @@ public class PanelAgregar extends JPanel {
 	private JButton botoneliminar;
 	private JButton volver;
 	
+	private String validar;
+	
 	
 	public PanelAgregar ()
 	{
@@ -206,6 +208,16 @@ public class PanelAgregar extends JPanel {
 
 	public JButton getVolver() {
 		return volver;
+	}
+
+
+	public String getValidar() {
+		return validar;
+	}
+
+
+	public void setValidar(String validar) {
+		this.validar = validar;
 	}
 	
 	

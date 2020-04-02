@@ -104,6 +104,24 @@ public class PanelVerContactos extends JPanel{
 		
 		
 	}
+	
+	public void reestablecer()
+	{
+		for(int i = 0;i<20;i++)
+		{
+			infoamigos.setValueAt("",i,0);
+			infoamigos.setValueAt("",i,1);
+			infoamigos.setValueAt("",i,2);
+			infoamigos.setValueAt("",i,3);
+			
+			infocontactos.setValueAt("",i,0);
+			infocontactos.setValueAt("",i,1);
+			infocontactos.setValueAt("",i,2);
+			infocontactos.setValueAt("",i,3);
+			infocontactos.setValueAt("",i,4);
+			
+		}
+	}
 
 	public JTable getInfoamigos() {
 		return infoamigos;
