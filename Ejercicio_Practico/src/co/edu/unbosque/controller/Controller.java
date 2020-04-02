@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import co.edu.unbosque.model.persistence.AmigosDAO;
 import co.edu.unbosque.model.persistence.Archivo;
 import co.edu.unbosque.model.persistence.TrabajoDAO;
 
-public class Controller {
+public class Controller implements ActionListener{
 
 		private ArrayList<ArrayList> agenda;
 		private Archivo archivo;
@@ -59,6 +60,7 @@ public class Controller {
 				}
 		}
 
+<<<<<<< HEAD
 		public static void main(String[]args) {
 			Controller c = new Controller();
 			Archivo ar = new Archivo();
@@ -68,4 +70,12 @@ public class Controller {
 			System.out.println(c.agenda.size());
 	
 		}
+=======
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+
+>>>>>>> branch 'master' of https://github.com/1911diego/TALLER_4ABRIL_PROG1
 }
