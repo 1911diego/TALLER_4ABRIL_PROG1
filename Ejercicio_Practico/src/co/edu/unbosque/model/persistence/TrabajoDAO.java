@@ -31,8 +31,8 @@ public class TrabajoDAO {
 		return contactoEncontrado;
 	}
 	
-	public boolean agregarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager,  ArrayList<ArrayList> agenda) {
-		Trabajo t = new Trabajo(pNombre, pEmpresa, pPais, pTelManager);
+	public boolean agregarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT,  ArrayList<ArrayList> agenda) {
+		Trabajo t = new Trabajo(pNombre, pEmpresa, pPais, pTelManager, correoT);
 		if(buscarContactoTrabajo(pTelManager, agenda) == null) {
 			agenda.get(1).add(t);
 			archivo.guardarAgenda(agenda);
@@ -70,9 +70,9 @@ public class TrabajoDAO {
 		
 		 return cantidadContactosTrabajo;
 	}
-	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, ArrayList<ArrayList> agenda) {
+	public boolean modificarContactoTrabajo(String pNombre, String pEmpresa, String pPais, String pTelManager, String correoT, ArrayList<ArrayList> agenda) {
 		eliminarContactoTrabajo(pTelManager, agenda);
-		agregarContactoTrabajo(pNombre, pEmpresa, pPais, pTelManager, agenda);
+		agregarContactoTrabajo(pNombre, pEmpresa, pPais, pTelManager, correoT, agenda);
 		return true;
 	}
 
