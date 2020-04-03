@@ -133,6 +133,14 @@ public class AmigosDAO {
 		}
 	}
 	
+	/**
+	 * Metodo que lista los caontactos de amigos
+	 * <b>pre</b>Se necesita que el ArrayList este inicializado, y el valor entero tenga un valor
+	 * <b>pos</b>Lista el contacto amigo encontrado
+	 * @param agenda Es el ArrayList de la agenda de contactos
+	 * @param a Es la posicion del ArrayList
+	 * @return Devuelve el listado de los contactos de amigo
+	 */
 	public Amigos listarAmigos(ArrayList<ArrayList> agenda, int a) {
 		ArrayList <Amigos> listaAmigos = agenda.get(0);
 		Amigos encontrado = null;

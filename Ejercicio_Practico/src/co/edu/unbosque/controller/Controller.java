@@ -24,6 +24,7 @@ public class Controller implements ActionListener{
 		private TrabajoDAO trabajodao;
 		private View vista;
 
+		//Constructor de la clase Controller
 		public Controller() {
 			agenda = new ArrayList<ArrayList>();
 			archivo = new Archivo();
@@ -50,7 +51,9 @@ public class Controller implements ActionListener{
 			
 		}
 		
-		
+		/**
+		 * Metodo que da los oyentes a los componentes de la vista
+		 */
 		public void setActionListeners()
 		{
 			//LISTENERS PANEL PRINCIPAL
@@ -74,9 +77,7 @@ public class Controller implements ActionListener{
 			
 		}
 
-	
-		
-		
+		//Metodo implementado de la interfaz actionListener
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			

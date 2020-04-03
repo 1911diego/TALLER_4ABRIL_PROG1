@@ -133,6 +133,14 @@ public class TrabajoDAO {
 		}
 	}
 	
+	/**
+	 * Metodo que lista los contactos de trabajo
+	 * <b>pre</b>Se necesita que el ArrayList este inicializado y el entero con un valor
+	 * <b>pos</b>Lista el contacto que se encontro
+	 * @param agenda Es el ArrayList de la agenda de contactos
+	 * @param a Es la posicion del ArrayList
+	 * @return Devuelve el listado de los cantactos de trabajo
+	 */
 	public Trabajo listarContactos(ArrayList<ArrayList> agenda, int a) {
 		ArrayList <Trabajo> listaContactos = agenda.get(1);
 		Trabajo encontrado = null;
@@ -147,6 +155,4 @@ public class TrabajoDAO {
 			return null;
 		}
 	}
-	
-
 }
