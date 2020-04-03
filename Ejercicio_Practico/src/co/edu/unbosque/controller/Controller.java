@@ -61,14 +61,14 @@ public class Controller implements ActionListener{
 			vista.getpPrincipal().getBotonmodificar().addActionListener(this);
 			vista.getpPrincipal().getBotonver().addActionListener(this);
 			vista.getpPrincipal().getCargararchivo().addActionListener(this);
+			vista.getpPrincipal().getBotoneliminar().addActionListener(this);
 			
 			//LISTENERS PANEL AGREGAR
 			vista.getpAgregar().getBotoncrear().addActionListener(this);
 			vista.getpAgregar().getBotoneditar().addActionListener(this);
-			vista.getpAgregar().getBotoneliminar().addActionListener(this);
 			vista.getpAgregar().getTipodecontacto().addActionListener(this);
 			vista.getpAgregar().getVolver().addActionListener(this);
-			vista.getpAgregar().getPais().addActionListener(this);
+			//vista.getpAgregar().getPais().addActionListener(this);
 			
 			//LISTENERS PANEL VER CONTACTOS
 			
@@ -125,8 +125,8 @@ public class Controller implements ActionListener{
 						System.out.println(agenda.size());
 						System.out.println(agenda.get(2).size());
 					} catch (Exception excep) {
-						excep.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Hubo un error leyendo la agenda física");
+						//excep.printStackTrace();
+						vista.mensajes("ERROR_AGENDA");
 					}
 			}
 			
@@ -138,6 +138,7 @@ public class Controller implements ActionListener{
 				vista.getpVer().setVisible(false);
 				vista.getpAgregar().getBotoncrear().setVisible(true);
 				vista.getpAgregar().getBotoneditar().setVisible(false);
+				vista.getpAgregar().getTipodecontacto().setEnabled(true);
 				vista.getpAgregar().reestablecer();
 			}
 			
@@ -190,8 +191,20 @@ public class Controller implements ActionListener{
 				correo = vista.getpAgregar().getTxtcorreo().getText();
 				empresa = vista.getpAgregar().getTxtempresa().getText();
 				
+				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("SELECCIONE TIPO"))
+				{
+					vista.mensajes("INGRESE_COMBOBOX");
+				}
+				
+				
 				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("AMIGO"))
 				{
+					if(nombre.isEmpty()||telefono.isEmpty()||correo.isEmpty())
+					{
+						vista.mensajes("INGRESE_TODOS_LOS_DATOS");
+					}
+					else
+					{
 					nuevoamigo = amigosdao.buscarAmigos(telefono, agenda);
 					
 					if(nuevoamigo==null)
@@ -203,9 +216,16 @@ public class Controller implements ActionListener{
 					{
 						vista.mensajes("NO_AGREGADO");
 					}
+					}
 				}
 				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("CONTACTO"))
 				{
+					if(nombre.isEmpty()||telefono.isEmpty()||correo.isEmpty()||empresa.isEmpty())
+					{
+						vista.mensajes("INGRESE_TODOS_LOS_DATOS");
+					}
+					else
+					{
 					nuevocontacto = trabajodao.buscarContactoTrabajo(telefono, agenda);
 					if(nuevocontacto==null)
 					{
@@ -216,9 +236,7 @@ public class Controller implements ActionListener{
 					{
 						vista.mensajes("NO_AGREGADO");
 					}
-					
-					
-					
+					}
 				}
 				
 				
@@ -227,11 +245,12 @@ public class Controller implements ActionListener{
 			//BOTÓN EDITAR CONTACTOS
 			if(e.getSource()==vista.getpPrincipal().getBotonmodificar())
 			{
-				String prueba = vista.mensajes("VALIDAR_MODIFICACION");
+				
+				String validar = vista.mensajes("VALIDAR_MODIFICACION");
 				String nombre, pais, telefono, correo, empresa;
 				
-				Amigos buscaramigos = amigosdao.buscarAmigos(prueba, agenda);
-				Trabajo buscarcontacto = trabajodao.buscarContactoTrabajo(prueba, agenda);
+				Amigos buscaramigos = amigosdao.buscarAmigos(validar, agenda);
+				Trabajo buscarcontacto = trabajodao.buscarContactoTrabajo(validar, agenda);
 				
 				if(buscaramigos!=null)
 				{
@@ -239,14 +258,15 @@ public class Controller implements ActionListener{
 					pais = buscaramigos.getPais();
 					telefono = buscaramigos.getNumTelefono();
 					correo = buscaramigos.getCorreo();
-					
+					System.out.print(pais);
 					
 					vista.getpAgregar().getTxtnombre().setText(nombre);
-					vista.getpAgregar().getPais().setSelectedItem(pais);
 					vista.getpAgregar().getTxttelefono().setText(telefono);
 					vista.getpAgregar().getTxtcorreo().setText(correo);
 					vista.getpAgregar().getTipodecontacto().setSelectedItem("AMIGO");
+					vista.getpAgregar().getTipodecontacto().setEnabled(false);
 					vista.getpAgregar().setValidar(telefono);
+					vista.getpAgregar().getPais().setSelectedItem(pais.toUpperCase());
 					vista.getpPrincipal().setVisible(false);
 					vista.getpAgregar().setVisible(true);
 					vista.getpVer().setVisible(false);
@@ -262,13 +282,15 @@ public class Controller implements ActionListener{
 					correo = buscarcontacto.getCorreoT();
 					empresa = buscarcontacto.getEmpresa();
 					
+					
 					vista.getpAgregar().getTxtnombre().setText(nombre);
-					vista.getpAgregar().getPais().setSelectedItem(pais);
 					vista.getpAgregar().getTxttelefono().setText(telefono);
 					vista.getpAgregar().getTxtcorreo().setText(correo);
 					vista.getpAgregar().getTxtempresa().setText(empresa);
 					vista.getpAgregar().getTipodecontacto().setSelectedItem("CONTACTO");
+					vista.getpAgregar().getTipodecontacto().setEnabled(false);
 					vista.getpAgregar().setValidar(telefono);
+					vista.getpAgregar().getPais().setSelectedItem(pais.toUpperCase());
 					vista.getpPrincipal().setVisible(false);
 					vista.getpAgregar().setVisible(true);
 					vista.getpVer().setVisible(false);
@@ -276,18 +298,17 @@ public class Controller implements ActionListener{
 					vista.getpAgregar().getBotoneditar().setVisible(true);
 				}
 				
+				
 				if(buscaramigos==null&&buscarcontacto==null)
 				{
+					
 					vista.mensajes("NO_ENCONTRADO");
 				}
-				
-				
-				
 			}
 			
 			//BOTÓN ELIMINAR CONTACTOS
 			
-			if(e.getSource()==vista.getpAgregar().getBotoneliminar())
+			if(e.getSource()==vista.getpPrincipal().getBotoneliminar())
 			{
 				String eliminar = vista.mensajes("ELIMINAR");
 				
@@ -329,14 +350,28 @@ public class Controller implements ActionListener{
 				
 				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("AMIGO"))
 				{
+					if(nombre.isEmpty()||telefono.isEmpty()||correo.isEmpty())
+					{
+						vista.mensajes("INGRESE_TODOS_LOS_DATOS");
+					}
+					else
+					{
 					amigosdao.modificarAmigo(telvalidar,nombre, pais, telefono, correo, agenda);
-					vista.mensajes("");
-					
+					vista.mensajes("EDITADO_EXITOSO");
+					}
 				}
 				
 				if(vista.getpAgregar().getTipodecontacto().getSelectedItem().equals("CONTACTO"))
 				{
+					if(nombre.isEmpty()||telefono.isEmpty()||correo.isEmpty()||empresa.isEmpty())
+					{
+						vista.mensajes("INGRESE_TODOS_LOS_DATOS");
+					}
+					else
+					{
 					trabajodao.modificarContactoTrabajo(telvalidar,nombre, empresa, pais, telefono, correo, agenda);
+					vista.mensajes("EDITADO_EXITOSO");
+					}
 				}
 			}
 			
@@ -374,6 +409,7 @@ public class Controller implements ActionListener{
 				vista.getpVer().getInfopais().setValueAt(españa,0,4);
 				vista.getpVer().getInfopais().setValueAt(argentina,0,5);
 				vista.getpVer().getInfopais().setValueAt(mexico,0,6);
+				
 				
 				int col1 = trabajodao.cantidadDeContactosTrabajoPorPais("colombia", agenda);
 				int per1 = trabajodao.cantidadDeContactosTrabajoPorPais("peru", agenda);

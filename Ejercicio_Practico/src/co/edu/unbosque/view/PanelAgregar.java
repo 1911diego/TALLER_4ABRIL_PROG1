@@ -25,7 +25,6 @@ public class PanelAgregar extends JPanel {
 	
 	private JButton botoncrear;
 	private JButton botoneditar;
-	private JButton botoneliminar;
 	private JButton volver;
 	
 	private String validar;
@@ -87,6 +86,7 @@ public class PanelAgregar extends JPanel {
 		pais.addItem("ESPAÑA");
 		pais.addItem("ARGENTINA");
 		pais.addItem("MEXICO");
+		pais.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
 		pais.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
@@ -118,25 +118,18 @@ public class PanelAgregar extends JPanel {
 		txtempresa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
 		botoncrear = new JButton();
-		botoncrear.setBounds(380,100,200,70);
+		botoncrear.setBounds(380,160,200,70);
 		imagenes = new ImageIcon("Resources/botonagregar.jpeg");
 		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(200, 70, Image.SCALE_DEFAULT));
 		botoncrear.setIcon(imagenes);
 		botoncrear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
 		botoneditar = new JButton();
-		botoneditar.setBounds(380,100,200,70);
+		botoneditar.setBounds(380,160,200,70);
 		imagenes = new ImageIcon("Resources/botoneditar.jpeg");
 		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(200, 70, Image.SCALE_DEFAULT));
 		botoneditar.setIcon(imagenes);
 		botoneditar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-		
-		botoneliminar = new JButton();
-		botoneliminar.setBounds(380,200,200,70);
-		imagenes = new ImageIcon("Resources/botoneliminar.jpeg");
-		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(200, 70, Image.SCALE_DEFAULT));
-		botoneliminar.setIcon(imagenes);
-		botoneliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
 		volver = new JButton();
 		volver.setBounds(470,320,110,40);
@@ -158,7 +151,6 @@ public class PanelAgregar extends JPanel {
 		fondo.add(txtcorreo);
 		fondo.add(txtempresa);
 		fondo.add(botoncrear);
-		fondo.add(botoneliminar);
 		fondo.add(botoneditar);
 		fondo.add(tipodecontacto);
 		fondo.add(volver);
@@ -216,11 +208,6 @@ public class PanelAgregar extends JPanel {
 
 	public JButton getBotoneditar() {
 		return botoneditar;
-	}
-
-
-	public JButton getBotoneliminar() {
-		return botoneliminar;
 	}
 
 

@@ -60,7 +60,8 @@ public class View extends JFrame{
 		if(mensaje.equalsIgnoreCase("ELIMINAR"))
 		{
 			String validacion = JOptionPane.showInputDialog("INGRESE EL NÚMERO DE TELÉFONO DEL AMIGO/CONTACTO QUE DESEA ELIMINAR");
-			return validacion;	
+
+			return validacion;
 		}
 		
 		if(mensaje.equalsIgnoreCase("ELIMINADO"))
@@ -70,6 +71,22 @@ public class View extends JFrame{
 		if(mensaje.equalsIgnoreCase("NO_ELIMINADO"))
 		{
 			JOptionPane.showMessageDialog(null, "!EL NÚMERO DE TELÉFONO INGRESADO NO EXISTE EN LA AGENDA!");
+		}
+		if(mensaje.equalsIgnoreCase("EDITADO_EXITOSO"))
+		{
+			JOptionPane.showMessageDialog(null,"EL AMIGO/CONTACTO HA SIDO EDITADO EXITOSAMENTE");
+		}
+		if(mensaje.equalsIgnoreCase("ERROR_AGENDA"))
+		{
+			JOptionPane.showMessageDialog(null, "Hubo un error leyendo la agenda física");
+		}
+		if(mensaje.equalsIgnoreCase("INGRESE_TODOS_LOS_DATOS"))
+		{
+			JOptionPane.showMessageDialog(null,"DEBE INGRESAR TODOS LOS DATOS");
+		}
+		if(mensaje.equalsIgnoreCase("INGRESE_COMBOBOX"))
+		{
+			JOptionPane.showMessageDialog(null,"DEBE ELEGIR QUE TIPO VA A INGRESAR(AMIGO/CONTACTO)");
 		}
 		return null;
 		
