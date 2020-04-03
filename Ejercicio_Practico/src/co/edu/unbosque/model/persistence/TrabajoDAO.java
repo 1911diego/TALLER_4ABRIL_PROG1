@@ -100,7 +100,7 @@ public class TrabajoDAO {
 		ArrayList <Trabajo> listaContactos = agenda.get(1);
 		if(!listaContactos.isEmpty()) {
 			for (int i = 0; i < listaContactos.size(); i++) {
-				if(listaContactos.get(i).getPais().equals(pais)){
+				if(listaContactos.get(i).getPais().equalsIgnoreCase(pais)){
 					cantidadContactosTrabajo++;
 				}
 			}

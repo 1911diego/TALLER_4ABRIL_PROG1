@@ -19,8 +19,12 @@ public class PanelVerContactos extends JPanel{
 	private JLabel contactos;
 	private JTable infoamigos;
 	private JTable infocontactos;
+	private JTable infopais;
 	private JButton volver;
 	
+	private JLabel lcantamigos;
+	private JLabel lcantcontactos;
+
 	
 	
 	
@@ -45,6 +49,16 @@ public class PanelVerContactos extends JPanel{
 		fondo.setIcon(imagenes);
 		fondo.setLayout(null);
 		
+		String[] [] datospais = new String[2][7];
+		String[] cabezerapais = {"TIPO","COLOMBIA","PERU","CHILE","ESPAÑA","ARGENTINA","MEXICO"};
+		
+		infopais = new JTable(datospais,cabezerapais);
+		JScrollPane scrollpaises = new JScrollPane(infopais);
+		scrollpaises.setBounds(20,330,540,60);
+		scrollpaises.setViewportView(infopais);
+		scrollpaises.getViewport().setView(infopais);
+		
+		
 		
 		String[][] datosamigos = new String[20][4];
 		String[] cabezeraamigos = {"NOMBRE","PAÍS","TELÉFONO","E-MAIL"};
@@ -58,6 +72,7 @@ public class PanelVerContactos extends JPanel{
 		scroll.getViewport().setView(infoamigos);
 		
 		String[][] datoscontactos = new String[20][5];
+		
 		String[] cabezeracontactos = {"NOMBRE","PAÍS","TELÉFONO","E-MAIL","EMPRESA"};
 
 		infocontactos = new JTable(datoscontactos,cabezeracontactos);
@@ -85,11 +100,28 @@ public class PanelVerContactos extends JPanel{
 		contactos.setForeground(Color.WHITE);
 		
 		volver = new JButton();
-		volver.setBounds(530,330,110,40);
+		volver.setBounds(560,350,110,40);
 		imagenes = new ImageIcon("Resources/botonvolver.jpeg");
 		imagenes = new ImageIcon(imagenes.getImage().getScaledInstance(110,40, Image.SCALE_DEFAULT));
 		volver.setIcon(imagenes);
 		volver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+		
+		
+		lcantamigos = new JLabel("CANTIDAD DE AMIGOS EN LA AGENDA: ");
+		lcantamigos.setBounds(247,20,400,20);
+		lcantamigos.setFont(new Font("helvetica",Font.HANGING_BASELINE,17));
+		lcantamigos.setForeground(Color.BLACK);
+		
+		lcantcontactos = new JLabel("CANTIDAD DE CONTACTOS EN LA AGENDA: ");
+		lcantcontactos.setBounds(210,40,400,20);
+		lcantcontactos.setFont(new Font("helvetica",Font.HANGING_BASELINE,17));
+		lcantcontactos.setForeground(Color.BLACK);
+		
+		JLabel ltitulopais= new JLabel("CANTIDADES POR PAÍS ");
+		ltitulopais.setBounds(40,320,400,20);
+		ltitulopais.setFont(new Font("helvetica",Font.HANGING_BASELINE,17));
+		ltitulopais.setForeground(Color.BLACK);
+		
 		
 		
 		add(fondo);
@@ -99,6 +131,10 @@ public class PanelVerContactos extends JPanel{
 		fondo.add(amigos);
 		fondo.add(contactos);
 		fondo.add(volver);
+		fondo.add(lcantamigos);
+		fondo.add(lcantcontactos);
+		fondo.add(scrollpaises);
+
 		
 		
 		
@@ -134,6 +170,18 @@ public class PanelVerContactos extends JPanel{
 		return volver;
 	}
 
+	public JTable getInfopais() {
+		return infopais;
+	}
 
+	public JLabel getLcantamigos() {
+		return lcantamigos;
+	}
+
+	public JLabel getLcantcontactos() {
+		return lcantcontactos;
+	}
+
+	
 
 }

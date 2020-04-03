@@ -101,7 +101,7 @@ public class AmigosDAO {
 		ArrayList <Amigos> listaAmigos = agenda.get(0);
 		if(!listaAmigos.isEmpty()) {
 			for (int i = 0; i < listaAmigos.size(); i++) {
-				if(listaAmigos.get(i).getPais().equals(pais)){
+				if(listaAmigos.get(i).getPais().equalsIgnoreCase(pais)){
 					cantidadAmigos++;
 				}
 			}

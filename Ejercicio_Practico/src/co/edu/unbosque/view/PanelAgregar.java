@@ -18,7 +18,7 @@ public class PanelAgregar extends JPanel {
 	private JComboBox<String> tipodecontacto;
 	private JLabel lnombre, lpais, lcorreo, ltelefono, lempresa;
 	private JTextField txtnombre;
-	private JTextField txtpais;
+	private JComboBox<String> pais;
 	private JTextField txtcorreo;
 	private JTextField txttelefono;
 	private JTextField txtempresa;
@@ -79,9 +79,16 @@ public class PanelAgregar extends JPanel {
 		lpais.setFont(new Font("helvetica",Font.HANGING_BASELINE,15));
 		lpais.setForeground(Color.WHITE);
 		
-		txtpais = new JTextField();
-		txtpais.setBounds(160,140,140,30);
-		txtpais.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+		pais = new JComboBox<String>();
+		pais.setBounds(160,140,140,30);
+		pais.addItem("COLOMBIA");
+		pais.addItem("PERU");
+		pais.addItem("CHILE");
+		pais.addItem("ESPAÑA");
+		pais.addItem("ARGENTINA");
+		pais.addItem("MEXICO");
+		
+		pais.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		
 		ltelefono = new JLabel("TELÉFONO");
 		ltelefono.setBounds(50,180,120,50);
@@ -146,7 +153,7 @@ public class PanelAgregar extends JPanel {
 		fondo.add(lcorreo);
 		fondo.add(lempresa);
 		fondo.add(txtnombre);
-		fondo.add(txtpais);
+		fondo.add(pais);
 		fondo.add(txttelefono);
 		fondo.add(txtcorreo);
 		fondo.add(txtempresa);
@@ -160,7 +167,6 @@ public class PanelAgregar extends JPanel {
 	public void reestablecer()
 	{
 		txtnombre.setText("");
-		txtpais.setText("");
 		txttelefono.setText("");
 		txtcorreo.setText("");
 		txtempresa.setText("");
@@ -183,8 +189,8 @@ public class PanelAgregar extends JPanel {
 	}
 
 
-	public JTextField getTxtpais() {
-		return txtpais;
+	public JComboBox<String> getPais() {
+		return pais;
 	}
 
 

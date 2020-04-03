@@ -65,10 +65,12 @@ public class Controller implements ActionListener{
 			vista.getpAgregar().getBotoneliminar().addActionListener(this);
 			vista.getpAgregar().getTipodecontacto().addActionListener(this);
 			vista.getpAgregar().getVolver().addActionListener(this);
+			vista.getpAgregar().getPais().addActionListener(this);
 			
 			//LISTENERS PANEL VER CONTACTOS
 			
 			vista.getpVer().getVolver().addActionListener(this);
+			
 			
 		}
 
@@ -182,7 +184,7 @@ public class Controller implements ActionListener{
 				Trabajo nuevocontacto;
 				String nombre, pais, telefono, correo, empresa, validar;
 				nombre = vista.getpAgregar().getTxtnombre().getText();
-				pais = vista.getpAgregar().getTxtpais().getText();
+				pais = (String) vista.getpAgregar().getPais().getSelectedItem();
 				telefono = vista.getpAgregar().getTxttelefono().getText();
 				correo = vista.getpAgregar().getTxtcorreo().getText();
 				empresa = vista.getpAgregar().getTxtempresa().getText();
@@ -239,7 +241,7 @@ public class Controller implements ActionListener{
 					
 					
 					vista.getpAgregar().getTxtnombre().setText(nombre);
-					vista.getpAgregar().getTxtpais().setText(pais);
+					vista.getpAgregar().getPais().setSelectedItem(pais);
 					vista.getpAgregar().getTxttelefono().setText(telefono);
 					vista.getpAgregar().getTxtcorreo().setText(correo);
 					vista.getpAgregar().getTipodecontacto().setSelectedItem("AMIGO");
@@ -260,7 +262,7 @@ public class Controller implements ActionListener{
 					empresa = buscarcontacto.getEmpresa();
 					
 					vista.getpAgregar().getTxtnombre().setText(nombre);
-					vista.getpAgregar().getTxtpais().setText(pais);
+					vista.getpAgregar().getPais().setSelectedItem(pais);
 					vista.getpAgregar().getTxttelefono().setText(telefono);
 					vista.getpAgregar().getTxtcorreo().setText(correo);
 					vista.getpAgregar().getTxtempresa().setText(empresa);
@@ -318,7 +320,7 @@ public class Controller implements ActionListener{
 				String nombre,pais,telefono,correo,empresa,telvalidar;
 				
 				nombre = vista.getpAgregar().getTxtnombre().getText();
-				pais = vista.getpAgregar().getTxtpais().getText();
+				pais = (String) vista.getpAgregar().getPais().getSelectedItem();
 				telvalidar = vista.getpAgregar().getValidar();
 				telefono = vista.getpAgregar().getTxttelefono().getText();
 				correo = vista.getpAgregar().getTxtcorreo().getText();
@@ -348,6 +350,56 @@ public class Controller implements ActionListener{
 				vista.getpAgregar().setVisible(false);
 				vista.getpVer().setVisible(true);
 				
+				String colombia, peru, chile, españa, argentina, mexico;
+				
+				int col = amigosdao.cantidadDeAmigosPorPais("colombia", agenda);
+				int per = amigosdao.cantidadDeAmigosPorPais("peru", agenda);
+				int chi = amigosdao.cantidadDeAmigosPorPais("chile", agenda);
+				int esp = amigosdao.cantidadDeAmigosPorPais("españa", agenda);
+				int arg = amigosdao.cantidadDeAmigosPorPais("argentina", agenda);
+				int mex = amigosdao.cantidadDeAmigosPorPais("mexico", agenda);
+				
+				colombia = String.valueOf(col);
+				peru = String.valueOf(per);
+				chile = String.valueOf(chi);
+				españa = String.valueOf(esp);
+				argentina = String.valueOf(arg);
+				mexico = String.valueOf(mex);
+				
+				vista.getpVer().getInfopais().setValueAt("AMIGOS",0,0);
+				vista.getpVer().getInfopais().setValueAt(colombia,0,1);
+				vista.getpVer().getInfopais().setValueAt(peru,0,2);
+				vista.getpVer().getInfopais().setValueAt(chile,0,3);
+				vista.getpVer().getInfopais().setValueAt(españa,0,4);
+				vista.getpVer().getInfopais().setValueAt(argentina,0,5);
+				vista.getpVer().getInfopais().setValueAt(mexico,0,6);
+				
+				int col1 = trabajodao.cantidadDeContactosTrabajoPorPais("colombia", agenda);
+				int per1 = trabajodao.cantidadDeContactosTrabajoPorPais("peru", agenda);
+				int chi1 = trabajodao.cantidadDeContactosTrabajoPorPais("chile", agenda);
+				int esp1 = trabajodao.cantidadDeContactosTrabajoPorPais("españa", agenda);
+				int arg1 = trabajodao.cantidadDeContactosTrabajoPorPais("argentina", agenda);
+				int mex1 = trabajodao.cantidadDeContactosTrabajoPorPais("mexico", agenda);
+				
+				String colombia1 = String.valueOf(col1);
+				String peru1 = String.valueOf(per1);
+				String chile1 = String.valueOf(chi1);
+				String españa1 = String.valueOf(esp1);
+				String argentina1 = String.valueOf(arg1);
+				String mexico1 = String.valueOf(mex1);
+				
+				vista.getpVer().getInfopais().setValueAt("CONTACTOS",1,0);
+				vista.getpVer().getInfopais().setValueAt(colombia1,1,1);
+				vista.getpVer().getInfopais().setValueAt(peru1,1,2);
+				vista.getpVer().getInfopais().setValueAt(chile1,1,3);
+				vista.getpVer().getInfopais().setValueAt(españa1,1,4);
+				vista.getpVer().getInfopais().setValueAt(argentina1,1,5);
+				vista.getpVer().getInfopais().setValueAt(mexico1,1,6);
+				
+				
+				
+				
+				
 				for(int i = 0; i<agenda.size();i++)
 				{
 					try {
@@ -356,6 +408,10 @@ public class Controller implements ActionListener{
 					vista.getpVer().getInfoamigos().setValueAt(listaramigos.getPais().toUpperCase(),i,1);
 					vista.getpVer().getInfoamigos().setValueAt(listaramigos.getNumTelefono().toUpperCase(),i,2);
 					vista.getpVer().getInfoamigos().setValueAt(listaramigos.getCorreo().toUpperCase(),i,3);
+					
+					String cantidadamigos = String.valueOf(i+1);
+					vista.getpVer().getLcantamigos().setText("CANTIDAD DE AMIGOS EN LA AGENDA: "+cantidadamigos);
+					
 					}
 					catch(Exception excepcion)
 					{
@@ -369,6 +425,9 @@ public class Controller implements ActionListener{
 						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getTelManager().toUpperCase(),i,2);
 						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getCorreoT().toUpperCase(),i,3);
 						vista.getpVer().getInfocontactos().setValueAt(listarcontactos.getEmpresa().toUpperCase(),i,4);
+						
+						String cantidadcontactos = String.valueOf(i+1);
+						vista.getpVer().getLcantcontactos().setText("CANTIDAD DE AMIGOS EN LA AGENDA: "+cantidadcontactos);
 						}
 						catch(Exception excepcion)
 						{
@@ -377,6 +436,8 @@ public class Controller implements ActionListener{
 					
 					
 				}
+				
+				
 				
 			}
 			
